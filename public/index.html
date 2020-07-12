@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hangman Game</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+  <style>
+    .shipCell {
+      border-color: blue !important;
+      border-width: 2px !important;
+    }
+
+    .gameInfoArea {
+      background-color: darkgrey;
+      color: black;
+      padding: 15px;
+    }
+
+    .opponentBoard>tbody>tr {
+      cursor: pointer;
+    }
+
+    .opponentBoard>tbody>tr>td{
+      width: 45px !important;
+      height: 45px !important;
+      padding: 0px !important;
+    }
+
+    .myBoardTD{
+      width: 45px !important;
+      height: 45px !important;
+      padding: 0px !important;
+    }
+
+    .hoveredTableCell {
+      background-color: #D2D6DB;
+      border-width: 2px;
+    }
+
+    .markedCell {
+      background-color: #D4ECF5 !important;
+    }
+
+    .dot {
+      height: 6px;
+      width: 6px;
+      background-color: black;
+      border-radius: 50%;
+      display: inline-block;
+      margin-left: 21px;
+      margin-top: 21px;
+    }
+
+    @media screen and (min-width: 769px) {
+      .opponent-links {
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+    }
+
+    .close {
+      position: absolute;
+      margin-left: 22px;
+      margin-top: -8px;
+    }
+
+    .close:before,
+    .close:after {
+      position: absolute;
+      content: ' ';
+      height: 63px;
+      width: 2px;
+      background-color: red;
+    }
+
+    .close:before {
+      transform: rotate(45deg);
+    }
+
+    .close:after {
+      transform: rotate(-45deg);
+    }
+
+    /* Close style for my current player board */
+    .closeForMyBoard {
+      position: absolute;
+      margin-left: 20px !important;
+      margin-top: -10px !important;
+    }
+
+    .neighbourMarked, .missedCell{
+      background-color: 	#F2F2FF;
+    }
+
+    .firstVertical{
+      border-top: 2px solid blue !important;
+      border-left: 2px solid blue !important;
+      border-right: 2px solid blue !important;
+    }
+
+    .lastVertical{
+      border-bottom: 2px solid blue !important;
+      border-left: 2px solid blue !important;
+      border-right: 2px solid blue !important;
+    }
+
+    .firstHorizontal{
+      border-bottom: 2px solid  blue !important;
+      border-left: 2px solid blue !important;
+      border-top: 2px solid blue !important;
+    }
+
+    .lastHorizontal{
+      border-bottom: 2px solid blue !important;
+      border-right: 2px solid blue !important;
+      border-top: 2px solid blue !important;
+    }
+
+    .onlyCell{
+      border: 2px solid blue !important;
+    }
+
+    .insideCellVertical{
+      border-left: 2px solid blue !important;
+      border-right: 2px solid blue !important;
+    }
+
+    .insideCellHorizontal{
+      border-top: 2px solid blue !important;
+      border-bottom: 2px solid blue !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Main container -->
+  <div class="container game_content">
+    <nav class="level">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="title">Battleship Game</p>
+          <p class="heading online-count"></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="level-item"><a class="opponent-links">Friend</a><a class="opponent-links">Random</a><a
+              class="button is-primary start-game-btn" disabled="true">Start Game</a> </p>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
